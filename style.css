@@ -74,8 +74,8 @@ main {
   border-radius: 30px;
   padding: 20px;
   margin: 20px auto;
-  max-width: 1000px;
-  width: 90%;
+  max-width: 80%;
+  /* width: 90%; */
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -138,17 +138,31 @@ main img {
 .buttom {
   margin-top: 3rem;
   font-weight: bold;
-  font-size: larger;
-}
-.btBack {
-  text-align: left;
-}
-.btNext {
+  font-size: 1.2rem;
   display: flex;
-  /* text-align: right; */
-  justify-content: right;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
 }
-
+.btNext,
+.btBack {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  background-color: #fbff0058;
+  border: 100px;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 50px;
+  color: black;
+}
+.btBack:hover,
+.btNext:hover {
+  font-size: 1.8rem;
+  color: red;
+  background-color: #fbff00c4;
+  width: 30%;
+}
 hr {
   border: none;
   width: 100%;
@@ -167,7 +181,7 @@ footer strong {
 }
 footer span {
   font-size: larger;
-  color: rgba(211, 10, 10, 0.66);
+  color: red;
 }
 /*next.index*/
 body {
@@ -206,4 +220,112 @@ a:hover {
   cursor: cell;
   color: #fa1b1b;
   text-decoration: none;
+  font-size: 1.1rem;
+}
+/* Transition*/
+
+content h2 {
+  width: 100%;
+  font-size: 3rem;
+  text-align: center;
+  text-shadow: 0.4rem 1px #666;
+}
+content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  /* margin-top: ; */
+  row-gap: 20px;
+  column-gap: 20px;
+}
+.boxCard {
+  margin: 10px;
+  width: 200px;
+  height: 300px;
+  display: flex;
+  /* background-color: #6aa51c; */
+  border-radius: 5vw;
+  justify-content: center;
+  align-items: center;
+  /* perspective: 1000px;
+  position: relative; */
+}
+
+/* Các thuộc tính cơ bản của boxCard (như trong ảnh của bạn) */
+.boxCard {
+  width: 200px; /* Hoặc kích thước bạn muốn */
+  height: 300px; /* Hoặc kích thước bạn muốn */
+  margin: 10px;
+
+  /* background-color: #6aa51c;
+  border-radius: 5vw; /* Hoặc đơn vị phù hợp */
+  /* display: flex; /* Nếu bạn muốn căn giữa nội dung bên trong boxCard */
+  /* justify-content: center; */
+  /* align-items: center; */
+
+  /* Quan trọng cho hiệu ứng 3D */
+  perspective: 1000px; /* Tạo không gian 3D cho hiệu ứng lật */
+  position: relative; /* Đảm bảo .card-inner có thể định vị tuyệt đối */
+}
+
+.boxCard img {
+  max-width: 90%; /* Đảm bảo ảnh không vượt quá kích thước của box */
+  display: block; /* Loại bỏ khoảng trắng dưới ảnh */
+  margin: 0 auto; /* Căn giữa ảnh */
+}
+
+/* Container chứa cả mặt trước và mặt sau, sẽ được lật */
+.card-inner {
+  border-radius: 50px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s; /* Thời gian và tốc độ lật */
+  transform-style: preserve-3d; /* Giữ các phần tử con trong không gian 3D */
+}
+
+/* Mặt trước và mặt sau của box */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Ẩn mặt sau khi không lật */
+  backface-visibility: hidden; /* Ẩn mặt sau khi không lật */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: inherit; /* Kế thừa border-radius từ .boxCard */
+  box-sizing: border-box; /* Đảm bảo padding không làm tràn kích thước */
+  padding: 10px; /* Padding cho nội dung */
+}
+
+.card-front {
+  background-color: #6aa51c; /* Hoặc màu nền riêng cho mặt trước */
+  color: white; /* Màu chữ nếu có */
+}
+
+.card-back {
+  background-color: #6aa51c; /* Màu nền cho mặt sau */
+  color: white; /* Màu chữ cho mặt sau */
+  transform: rotateY(180deg); /* Ban đầu xoay 180 độ để ẩn nó */
+}
+
+/* Hiệu ứng khi hover vào .boxCard */
+.boxCard:hover .card-inner {
+  transform: rotateY(180deg);
+  /* color: #6aa51c; */
+}
+
+/* Tùy chỉnh cho nội dung mặt sau */
+.card-back h3 {
+  margin-bottom: 10px;
+}
+.card-back p {
+  font-size: 0.9em;
+  line-height: 1.5;
 }
